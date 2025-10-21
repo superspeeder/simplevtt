@@ -5,6 +5,7 @@
 #pragma once
 
 #include <SDL3/SDL.h>
+#include <SDL3/SDL_gpu.h>
 
 namespace VTT::Client {
 
@@ -22,7 +23,8 @@ namespace VTT::Client {
 
     private:
         SDL_Window* m_Window;
-        SDL_Renderer* m_Renderer;
+        SDL_GPUDevice* m_GpuDevice;
+
 
         bool m_ShouldClose = false;
     };
