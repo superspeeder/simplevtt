@@ -1,0 +1,25 @@
+{
+  "name" : "simplevtt",
+  "version-string" : "1.0.0",
+  "builtin-baseline" : "c6935bce7513fa878944c03cd72473b298fab53e",
+  "dependencies" : [ {
+    "name" : "boost",
+    "version>=" : "1.89.0"
+  }, {
+    "name" : "spdlog",
+    "version>=" : "1.15.3"
+  }, {
+    "name" : "imgui",
+    "version>=" : "1.91.9",
+    "features" : [ "docking-experimental", "glfw-binding", "sdl3-binding", "sdl3-renderer-binding" ]
+  }, {
+    "name" : "sdl3",
+    "version>=" : "3.2.24"
+  }, {
+    "name" : "sdl3-image",
+    "version>=" : "3.2.4"
+  }, {
+    "name" : "sdl3-ttf",
+    "version>=" : "3.2.2#1"
+  } ]
+}
