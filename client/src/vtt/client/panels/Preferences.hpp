@@ -13,10 +13,14 @@ namespace VTT::Client::Panels {
         inline constexpr uint32_t Preferences = 2;
     }
 
-    class Preferences final : public PersistentPanel<ID::Preferences, "Preferences"> {
+    class Preferences final : public UniquePanel<ID::Preferences, "Preferences"> {
     public:
+        PANEL_PERSISTENT;
+
         Preferences() {}
         void Render() override;
+
+        void Appearance();
 
     private:
         int m_CurrentTab = 0;

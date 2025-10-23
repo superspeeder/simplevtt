@@ -64,13 +64,9 @@ namespace VTT::Client {
 
     private:
     };
-
-    template <uint32_t id, detail::StringLiteral name>
-    class PersistentPanel : public UniquePanel<id, name> {
-    public:
-        static constexpr std::bool_constant<true> PERSISTENT{};
-
-        inline bool PersistAfterClose() const override { return true; };
-
-    };
 } // namespace VTT::Client
+
+#ifndef VTTC_NO_HELPER_MACROS
+#define PANEL_PERSISTENT inline bool PersistAfterClose() const override { return true; }; static constexpr std::bool_constant<true> PERSISTENT{}
+#endif
+
