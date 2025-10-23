@@ -7,6 +7,7 @@
 #include <iostream>
 
 #include "vtt/client/App.hpp"
+#include "vtt/client/panels/Preferences.hpp"
 
 int main() {
     std::cout << "Header Version: " << VTT::Core::HeaderVersion << std::endl;
