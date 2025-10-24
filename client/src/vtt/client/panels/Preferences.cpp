@@ -55,10 +55,6 @@ namespace VTT::Client::Panels {
     }
 
     void Preferences::Appearance() {
-        ImGuiStyle& style = ImGui::GetStyle();
-        ImGui::ColorEdit3("Window Background", (float*)&style.Colors[ImGuiCol_WindowBg], ImGuiColorEditFlags_NoInputs);
-
-        ImGui::Separator();
         if (ImGui::Button("Classic")) {
             ImGui::StyleColorsClassic();
         }

@@ -5,8 +5,10 @@
 #pragma once
 #include <string_view>
 
+#include <memory>
+
 namespace VTT::Client {
-    class Panel {
+    class Panel : public std::enable_shared_from_this<Panel> {
     public:
         explicit Panel(std::string_view name, uint32_t id = ~0U);
         virtual ~Panel() = default;
@@ -27,6 +29,7 @@ namespace VTT::Client {
         inline virtual bool IsOpen() const { return m_IsOpen; };
 
         inline virtual void Reopen() { m_IsOpen = true; };
+        inline void Close() { m_IsOpen = false; }
 
         /**
          * Persistent panels must have a static ID field and a static NAME field to allow for proper recreation.

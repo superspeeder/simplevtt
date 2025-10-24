@@ -74,6 +74,8 @@ namespace VTT::Client {
         void ClosePanel(std::string_view name);
         void ClosePanel(uint32_t id);
 
+        inline static App& Instance() { return *s_Instance; };
+
     private:
         SDL_Window*    m_Window;
         SDL_GPUDevice* m_GpuDevice;

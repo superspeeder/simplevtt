@@ -13,6 +13,8 @@
 
 #include "vtt/client/panels/About.hpp"
 #include "vtt/client/panels/Preferences.hpp"
+#include "vtt/client/panels/CreateUniverse.hpp"
+#include <iostream>
 
 constexpr ImVec4 clear_color{0.0f, 0.0f, 0.0f, 1.0f};
 
@@ -47,6 +49,11 @@ namespace VTT::Client {
         const float main_scale = SDL_GetDisplayContentScale(SDL_GetPrimaryDisplay());
         m_Window               = SDL_CreateWindow("Simple VTT", 1280 * main_scale, 800 * main_scale,
                                                   SDL_WINDOW_HIGH_PIXEL_DENSITY | SDL_WINDOW_RESIZABLE | SDL_WINDOW_HIDDEN);
+        if (!m_Window) {
+            std::cerr << "Error creating window: " << SDL_GetError() << std::endl;
+            exit(EXIT_FAILURE);
+        }
+
         SDL_SetWindowPosition(m_Window, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED);
         SDL_MaximizeWindow(m_Window);
         SDL_ShowWindow(m_Window);
@@ -177,9 +184,17 @@ namespace VTT::Client {
     void App::MainMenu() {
         ImGui::BeginMainMenuBar();
         if (ImGui::BeginMenu("File")) {
+            if (ImGui::BeginMenu("New")) {
+                if (ImGui::MenuItem("Universe")) {
+                    OpenPanel<Panels::CreateUniverse>();
+                }
+                ImGui::EndMenu();
+            }
+
             if (ImGui::MenuItem("Quit")) {
                 m_ShouldClose = true;
             }
+
             ImGui::EndMenu();
         }
         if (ImGui::BeginMenu("View")) {

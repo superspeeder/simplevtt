@@ -4,10 +4,7 @@ find_package(SDL3 CONFIG REQUIRED)
 find_package(SDL3_image CONFIG REQUIRED)
 find_package(SDL3_ttf CONFIG REQUIRED)
 
-add_executable(vttclient src/vtt/client/main.cpp
-        src/vtt/client/App.cpp
-        src/vtt/client/App.hpp
-
+add_executable(vttclient
         src/imgui/imgui.cpp
         src/imgui/imgui_demo.cpp
         src/imgui/imgui_draw.cpp
@@ -17,12 +14,19 @@ add_executable(vttclient src/vtt/client/main.cpp
         src/imgui/imgui_impl_sdlrenderer3.cpp
         src/imgui/imgui_tables.cpp
         src/imgui/imgui_widgets.cpp
+        src/imgui/imgui_stdlib.cpp
+
+        src/vtt/client/main.cpp
+        src/vtt/client/App.cpp
+        src/vtt/client/App.hpp
         src/vtt/client/Panel.cpp
         src/vtt/client/Panel.hpp
         src/vtt/client/panels/About.cpp
         src/vtt/client/panels/About.hpp
         src/vtt/client/panels/Preferences.cpp
         src/vtt/client/panels/Preferences.hpp
+        src/vtt/client/panels/CreateUniverse.cpp
+        src/vtt/client/panels/CreateUniverse.hpp
 )
 target_include_directories(vttclient PRIVATE src/)
 target_link_libraries(vttclient vtt::core SDL3::SDL3 SDL3_ttf::SDL3_ttf $<IF:$<TARGET_EXISTS:SDL3_image::SDL3_image-shared>,SDL3_image::SDL3_image-shared,SDL3_image::SDL3_image-static>)
