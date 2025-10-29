@@ -34,3 +34,4 @@ target_link_libraries(vttclient vtt::core SDL3::SDL3 SDL3_ttf::SDL3_ttf $<IF:$<T
 add_executable(vtt::client ALIAS vttclient)
 
 add_custom_target(prepare_run_vttclient COMMAND ${CMAKE_COMMAND} -E copy_if_different "$<TARGET_RUNTIME_DLLS:vttclient>" $<TARGET_FILE_DIR:vttclient> VERBATIM COMMAND_EXPAND_LISTS)
+add_dependencies(vttclient prepare_run_vttclient)
